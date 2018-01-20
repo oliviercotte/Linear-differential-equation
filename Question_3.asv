@@ -1,0 +1,21 @@
+% Initialisation des variables importantes
+mu = 0.012277471;
+nbpas = 1000;
+T = 17.065216560157962559;
+h = 0.01;           % longueur du pas de temps
+t0 = 0;             
+x0 = [0.994, 0];      % conditions initiales pour x
+y0 = [0 -2.0015851063790825224];      % conditions initiales pour y
+
+% Résolution de l'équation
+[t,y1] = eulerexpl('eqndiff',t0,[x0,y0],h,nbpas);
+[t,y2] = ptmilieu('eqndiff',t0,[x0,y0],h,nbpas);
+[t,y3] = eulmod('eqndiff',t0,[x0,y0],h,nbpas);
+[t,y4] = rk4('eqndiff',t0,[x0,y0],h,nbpas);
+
+% Graphique de différentes approximations
+clf reset;
+hold on
+plot (t,y4(:,1), 'x');    % Euleur explicite
+plot (t,y4(:,3), 'o');    % Euleur explicite
+hold off;

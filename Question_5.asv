@@ -1,0 +1,56 @@
+% Question 5
+
+% Initialisation des variables importantes
+C = 1/50;
+epsilon1 = 1e-14;
+epsilon2 = 1e-10;
+epsilon3 = 1e-8;
+nbpas1 = 50;
+nbpas2 = 500;
+nbpas3 = 5000;
+h1 = 0.1;
+h2 = 0.01;
+h3 = 0.001;
+t0 = 0;
+y0 = C;
+analytique1 = zeros(nbpas1,1);
+analytique2 = zeros(nbpas2,1);
+analytique3 = zeros(nbpas3,1);
+
+% Résolution de l'équation avec euler explicite et Runge-Kutta ordre 4
+[t1,y1] = rk4('eqndiff',t0,y0,h1,nbpas1);
+[t2,y2] = rk4('eqndiff',t0,y0,h2,nbpas2);
+[t3,y3] = rk4('eqndiff',t0,y0,h3,nbpas3);
+
+analytique1 = t1'.^2 + t1'./5 + 1/50 + (C - 1/50)*exp(10.*t1');
+analytique2 = t2'.^2 + t2'./5 + 1/50 + (C - 1/50)*exp(10.*t2');
+analytique3 = t3'.^2 + t3'./5 + 1/50 + (C - 1/50)*exp(10.*t3');
+
+erreur_relative_h1 = abs(analytique1 - y1)./abs(y1;
+erreur_relative_h2 = abs(analytique2 - y2)./y2;
+erreur_relative_h3 = abs(analytique3 - y3)./y3;
+
+% Graphique des erreur relatives par Runge-Kutta
+%clf reset;
+%hold on
+%semilogy(t, erreur1, '-.r');
+%semilogy(t, erreur2, '-.g');
+%semilogy(t, erreur3, '-.b0');
+%hold off;
+
+% Solution analytique
+%analytique1 = t1.^2 + t1./5 +(1/50)*(C - 1/50).*exp(10*t1);
+%analytique2 = t2.^2 + t2./5 +(1/50)*(C - 1/50).*exp(10*t2);
+%analytique3 = t3.^2 + t3./5 +(1/50)*(C - 1/50).*exp(10*t3);
+
+t = linspace(0,5,10);
+erreur1 = epsilon1.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
+erreur2 = epsilon2.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
+erreur3 = epsilon3.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
+% Graphique des erreur relative
+%clf reset;
+%hold on
+%semilogy(t, erreur1, '-.r');
+%semilogy(t, erreur2, '-.g');
+%semilogy(t, erreur3, '-.b0');
+%hold off;

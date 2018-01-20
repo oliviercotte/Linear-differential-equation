@@ -1,0 +1,13 @@
+function f = eqndiff(t,y)
+
+% Exemple de membre de droite d'un système d'EDO : f(t,y(t))
+
+f = zeros(size(y),1);  % on détermine le nombre d'EDO
+
+% On définit quelques constantes
+
+% Système d'équations différentielles adimensionnalisé qui modélise la
+% dynamique du satellite
+% Le membre de droite de chaque EDO
+f(1) = 10*(y(1) - t.^2);
+end
