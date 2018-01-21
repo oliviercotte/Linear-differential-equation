@@ -59,9 +59,9 @@ erreur1 = epsilon1.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
 erreur2 = epsilon2.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
 erreur3 = epsilon3.*(exp(10*t)./(t.^2 + t./5 +(1/50)));
 % Graphique des erreur relative
-clf reset;
+figure
 hold on
 semilogy(t, erreur1, '-.r');
 semilogy(t, erreur2, '-.g');
-semilogy(t, erreur3, '-.b0');
+semilogy(t, erreur3, '-.b');
 hold off;
